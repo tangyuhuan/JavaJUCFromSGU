@@ -2,7 +2,7 @@ package lock;
 
 import java.util.concurrent.locks.ReentrantLock;
 
-/**p7
+/**p7 Lock接口概述和实现案例
  * 2.2.1 Lock接口：使用三部曲
  * 参考在线jdk文档：https://doc.qzxdp.cn/jdk/17/zh/api/java.base/java/util/concurrent/locks/ReentrantLock.html
  * @author tyh
@@ -10,6 +10,8 @@ import java.util.concurrent.locks.ReentrantLock;
  * 多线程编程步骤
  * 第一步：创建资源类，定义属性和操作方法
  * 第二步：创建多线程调用资源类的方法
+ *
+ * p19 公平锁和非公平锁
  */
 public class LSaleTicket {
     public static void main(String[] args) {
@@ -37,7 +39,11 @@ class LTicket {
     //票数量
     private int number = 30;
     //1.创建可重入锁
-    private final ReentrantLock lock = new ReentrantLock();
+    //new ReentrantLock();无参构造器创建的是非公平锁，票都被AA卖出去了，BB和CC饿死
+    //非公平锁：优点是执行效率高，缺点是会造成活都被一个线程干了，其他线程被饿死的情况
+    //公平锁：阳光普照，缺点效率相对低
+//    private final ReentrantLock lock = new ReentrantLock();
+    private final ReentrantLock lock = new ReentrantLock(true);
     private boolean soldout = false;
     //卖票方法
     public void sale() {
