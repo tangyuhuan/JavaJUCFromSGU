@@ -5,7 +5,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-/**p14 集合线程安全-异常演示
+/**p14 集合线程安全-异常演示：线程安全是指在多线程环境下,多个线程同时访问同一资源时,不会产生意外结果或导致数据出错的状态。
+ * 线程不安全即当有多个线程同时对集合进行修改时，会出现java.util.ConcurrentModificationException异常
  * p17 集合线程安全-HashSet和HashMap线程不安全
  * 1.ArrayList集合线程不安全
  * 2.HashSet集合线程不安全
@@ -81,8 +82,8 @@ public class ThreadDemo4 {
             new Thread(() -> {
                 //从集合中加入内容
                 hashMap.put(key,UUID.randomUUID().toString().substring(0, 8));
-                /*i不是Final或Effectively Final，这种写法不可以*/
-                /*hashMap.put(String.valueOf(i),UUID.randomUUID().toString().substring(0, 8));*/
+                //*i不是Final或Effectively Final，这种写法不可以*//*
+                //*hashMap.put(String.valueOf(i),UUID.randomUUID().toString().substring(0, 8));*//*
                 //从集合中获取内容
                 System.out.println(hashMap);//这行产生异常，并发修改问题
             },String.valueOf(i)).start();

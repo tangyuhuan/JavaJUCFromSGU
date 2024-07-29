@@ -26,7 +26,7 @@ public class CyclicBarrierDemo {
                 //如果没有集齐七颗龙珠，就处于等待状态
                 try {
                     System.out.println(Thread.currentThread().getName()+"星龙被收集到了");
-                    cyclicBarrier.await();
+                    cyclicBarrier.await();//每次执行CyclicBarrier一次障碍数会加一，如果达到了目标障碍数，才会执行cyclicBarrier.await()之后的语句。
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }

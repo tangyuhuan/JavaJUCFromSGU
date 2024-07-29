@@ -2,7 +2,7 @@ package readwrite;
 
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-/**p32 读写锁的降级
+/**p32 读写锁的降级：写的时候可以读，写锁降级成读锁
  * @author tyh
  * @version 1.0
  */

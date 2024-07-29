@@ -43,7 +43,7 @@ class LTicket {
     //非公平锁：优点是执行效率高，缺点是会造成活都被一个线程干了，其他线程被饿死的情况
     //公平锁：阳光普照，缺点效率相对低
 //    private final ReentrantLock lock = new ReentrantLock();
-    private final ReentrantLock lock = new ReentrantLock(true);
+    private final ReentrantLock lock = new ReentrantLock(true);//true创建公平锁
     private boolean soldout = false;
     //卖票方法
     public void sale() {

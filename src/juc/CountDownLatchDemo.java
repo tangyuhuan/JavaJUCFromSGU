@@ -31,7 +31,7 @@ public class CountDownLatchDemo {
                 countDownLatch.countDown();
             },String.valueOf(i)).start();
         }
-        //等待（当计数器值没有变成0，就一直等待，变成0就执行await之后的代码）
+        //等待（当计数器值没有变成0，就一直等待，变成0因await方法阻塞的线程会被唤醒，继续执行）
         countDownLatch.await();
         System.out.println(Thread.currentThread().getName()+"班长锁门");
 

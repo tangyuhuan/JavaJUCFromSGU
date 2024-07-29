@@ -5,13 +5,15 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
 /**p27 JUC-辅助类（信号灯Semaphore）
+ * Semaphore 的构造方法中传入的第一个参数是最大信号量（可以看成最大线程池），每个信号量初始化为一个最多只能分发一个许可证。
+ * 使用 acquire 方法获得许可证，release 方法释放许可
  * 使用场景：6辆汽车，停3个车位
  * @author tyh
  * @version 1.0
  */
 public class SemaphoreDemo {
     public static void main(String[] args) {
-        //1.创建Semaphore，设置许可数量3
+        //1.创建Semaphore，设置许可数量3，
         Semaphore semaphore = new Semaphore(3);
         //模拟6辆汽车
         for (int i = 0; i < 6; i++) {

@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**p13 线程间定制化通信
+/**p13 线程间定制化通信：让线程按照约定的顺序执行
  * A线程打印5次A，B线程打印10次B，C线程打印15次C,按照此顺序循环10轮
  * @author tyh
  * @version 1.0
@@ -13,7 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 第二步：在资源类操作方法（1）判断（2）干活 （3）通知
  * 第三步：创建多线程调用资源类的方法
  *
- * 定制化通信方式在于设定标志位置
+ * 定制化通信方式在于设定标志位
  */
 
 //第一步：创建资源类
@@ -27,7 +27,7 @@ class ShareResource{
 
     //创建lock锁
     private Lock lock = new ReentrantLock();
-    //创建3把钥匙
+    //创建3把钥匙（条件对象）
     private Condition c1= lock.newCondition();
     private Condition c2= lock.newCondition();
     private Condition c3= lock.newCondition();

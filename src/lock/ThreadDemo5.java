@@ -34,6 +34,7 @@ public class ThreadDemo5 {
         }
 /*
         解决方案2: Collections工具类的synchronizedList(List<T> list)方法,返回由指定列表支持的同步（线程安全）列表。
+        任何集合通过使用同步包装器synchronizedList wrapper变成线程安全的
 */
         List<String> list2 = Collections.synchronizedList(new ArrayList<>());
         for (int i = 0; i < 10; i++) {

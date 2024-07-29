@@ -1,9 +1,11 @@
 package pool;
 
+import java.util.concurrent.AbstractExecutorService;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**p37 使用方式和底层原理
+ * 线程池中execute和submit都是线程池提交任务的方式
  * @author tyh
  * @version 1.0
  */
@@ -62,6 +64,5 @@ public class ThreadPoolDemo1 {
             //关闭
             pool3.shutdown();
         }
-
     }
 }
